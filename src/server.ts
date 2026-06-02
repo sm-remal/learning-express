@@ -1,9 +1,15 @@
 import express, { type Application, type Request, type Response } from "express"
-const app: Application = express()
+import {Pool} from "pg"
+const app: Application = express() 
 const port = 5000
 
 // Middleware
 app.use(express.json());
+
+// Connection to PostgreSQL
+const pool = new Pool({
+    connectionString: "postgresql://neondb_owner:npg_qBbu6zIUWTS4@ep-young-dust-aq76qs2o.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require"
+})
 
 // Get request
 app.get('/', (req: Request, res: Response) => {
