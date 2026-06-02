@@ -11,6 +11,18 @@ const pool = new Pool({
     connectionString: "postgresql://neondb_owner:npg_qBbu6zIUWTS4@ep-young-dust-aq76qs2o.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require"
 })
 
+
+// Database Table
+const initDB = async () => {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 // Get request
 app.get('/', (req: Request, res: Response) => {
 //   res.send('Hello World!')
