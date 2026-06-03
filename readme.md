@@ -19,3 +19,6 @@ Backend Project Setup:
 7. // Database:  npm i pg
 
 8. npm i --save-dev @types/pg
+
+----------------------------
+For dist: npx tsc
