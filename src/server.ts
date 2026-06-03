@@ -188,7 +188,8 @@ app.delete('/api/users/:id', async (req: Request, res: Response) => {
         const result = await pool.query(`
             DELETE FROM users WHERE id = $1 RETURNING *
             `,[id]);
-            if (result.rows.length === 0){
+
+            if (result.rowCount === 0){
                 return res.status(404).json({
                     success: false,
                     message: "User not found",
@@ -206,11 +207,11 @@ app.delete('/api/users/:id', async (req: Request, res: Response) => {
             message: error.message,
             error: error,
         })
-        
     }
 })
 
    
+
 // App listen 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
