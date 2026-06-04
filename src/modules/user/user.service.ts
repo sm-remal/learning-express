@@ -1,6 +1,8 @@
 import { pool } from "../../db";
 import type { IUser } from "./user.interface";
 
+
+// Create user into database
 const createUserIntoDB = async (payload: IUser) => {
 
     const {name, email, password, age} = payload;
@@ -15,6 +17,7 @@ const createUserIntoDB = async (payload: IUser) => {
 } 
 
 
+// Get all users from database
 const getAllUsersFromDB = async () => {
     const result = await pool.query(`
             SELECT * FROM users
@@ -22,7 +25,18 @@ const getAllUsersFromDB = async () => {
         return result;
 }
 
+
+// Get single user by id from database
+const getSingleUserFromDB = async (id: string) => { 
+    const result = await pool.query(`
+            SELECT * FROM users WHERE id = $1 
+            `, [id]);
+    return result;
+}
+
+
 export const userService = {
     createUserIntoDB,
     getAllUsersFromDB,
+    getSingleUserFromDB,
 }
