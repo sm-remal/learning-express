@@ -85,7 +85,7 @@ const updateUser = async (req: Request, res: Response) => {
     // console.log({id, name, password, age, is_active}); 
 
     try {
-        
+
         const result = await userService.updateUserIntoDB(req.body, id as string);
 
         // If user not found
@@ -112,9 +112,38 @@ const updateUser = async (req: Request, res: Response) => {
     }
 }
 
+const deleteUser = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    try {
+
+        const result = await userService.deleteUser(id as string);
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "User Deleted Successfully",
+            data: {},
+        })
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+            error: error,
+        })
+    }
+}
+
 export const userController = {
     createUser,
     getAllUsers,
     getSingleUser,
     updateUser,
+    deleteUser,
 }
