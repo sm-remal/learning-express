@@ -6,7 +6,7 @@ const app: Application = express();
 // Middleware
 app.use(express.json());
 
-// Get request
+// Get request for server testing
 app.get('/', (req: Request, res: Response) => {
     //   res.send('Hello World!')
     res.status(200).json({
