@@ -1,0 +1,33 @@
+ Method -> GET, Time -> 1780845941299, Time -> / 
+
+ Method -> GET, Time -> 1780845945266, Time -> /products 
+
+ Method -> GET, Time -> 1780845948381, Time -> /users 
+
+ Method -> GET, Time -> 1780845962792, Time -> / 
+
+ Method -> GET, Time -> 1780845973711, Time -> /api/users 
+
+ Method -> GET, Time -> 1780845986007, Time -> /api/products 
+
+ Method -> GET, Time -> 1780845997520, Time -> /api/product 
+
+ Method -> GET, Time -> 1780846013704, Time -> /api/profiles 
+
+ Method -> GET, Time -> 1780846017471, Time -> /api/profiles 
+
+ Method -> GET, Time -> 1780846020337, Time -> /api/profile 
+
+ Method -> GET, Time -> 1780846023801, Time -> /api/profile 
+
+ Method -> GET, Time -> 1780847226551, Time -> / 
+
+ Method -> GET, Time -> 1780847231852, Time -> /api/users 
+
+ Method -> POST, Time -> 1780847262044, Time -> /api/auth/login 
+
+ Method -> GET, Time -> 1780847295871, Time -> /api/users 
+
+ Method -> GET, Time -> 1780847331823, Time -> /api/users 
+
+ Method -> GET, Time -> 1780847352937, Time -> /api/users 
