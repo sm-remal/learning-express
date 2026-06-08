@@ -7,7 +7,7 @@ const loginUser = async (req: Request, res: Response) => {
 
         const result = await authService.loginUserIntoDB(req.body);
 
-        const {refreshToken} = result;
+        const { refreshToken } = result;
 
         res.cookie("refreshToken", refreshToken, {
             secure: false,         // In production -> true
@@ -20,7 +20,28 @@ const loginUser = async (req: Request, res: Response) => {
             message: "User created successfully",
             data: result,
         })
-        
+
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+            error: error,
+        })
+    }
+}
+
+const refreshToken = async (req: Request, res: Response) => {
+    // console.log(req.cookies);
+    try {
+
+        const result = await authService.generateRefreshToken(req.cookies.refreshToken);
+
+        res.status(201).json({
+            success: true,
+            message: "Access token generate!",
+            data: result,
+        })
+
     } catch (error: any) {
         res.status(500).json({
             success: false,
@@ -32,4 +53,5 @@ const loginUser = async (req: Request, res: Response) => {
 
 export const authController = {
     loginUser,
+    refreshToken,
 }
