@@ -2,9 +2,12 @@ import type { NextFunction, Request, Response } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import config from "../config";
 import { pool } from "../db";
+import type { ROLE } from "../types";
 
-const auth = () => {
+const auth = (...roles: ROLE[]) => {
+
     return async (req: Request, res: Response, next: NextFunction) => {
+        console.log(roles);
         try {
             // console.log("This is protected route!!");
             // console.log(req.headers.authorization);
@@ -47,12 +50,23 @@ const auth = () => {
             }
 
             // 4. If the user active or not
-            if (!user.is_active) {
+            if (!user?.is_active) {
                 res.status(403).json({
                     success: false,
                     message: "Forbidden !!",
                 })
             }
+
+            // console.log(user.role);
+
+            // 5. Role wise validation 
+            if (roles.length && !roles.includes(user.role)) {
+                res.status(403).json({
+                    success: false,
+                    message: "Forbidden !! This role have no access",
+                })
+            }
+
 
             req.user = decoded      // req: { user: {} }
 
