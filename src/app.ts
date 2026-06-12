@@ -9,7 +9,7 @@ import cors from "cors"
 import globalErrorHandler from "./middleware/globalErrorHandler";
 
 
-const app: Application = express();
+const app: Application = express(); 
 
 // Middleware
 app.use(cookieParser());
